@@ -10,7 +10,7 @@ public class Contact {
 	public Contact() {
 		
 	}
-
+	
 	// constructor
 	public Contact(String tel, String fax) {
 		super();
