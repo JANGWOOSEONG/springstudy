@@ -9,49 +9,65 @@
 <title>Insert title here</title>
 <script src="${contextPath}/resources/js/lib/jquery-3.6.4.min.js"></script>
 <script>
+
    function fnBmi1(){
-	   $.ajax({
-		   // 요청
-		   type: 'get',
-		   url: '${contextPath}/second/bmi1',
-		   data: $('#frm').serialize(),
-		   // 응답
-		   dataType: 'json',
-			   success: function(resData){ 				// resData : {bmi: 22, "obesity" : "정상"}
-			   	$('#bmi').text(resData['bmi']);			// resData.bmi     == resData['bmi']
-		   		$('#obesity').text(resData['obesity']); // resData.obesity == resData['obesity']
-		   },
-		   error: function(jqXHR){
-			   $('#bmi').text('');
-			   $('#obesity').text('');
-			   alert(jqXHR.responseText);
-		   }
-	   })
+      $.ajax({
+         // 요청
+         type: 'get',
+         url: '${contextPath}/second/bmi1',
+         data: $('#frm').serialize(),
+         // 응답
+         dataType: 'json',
+         success: function(resData){               // resData : {"bmi": 22, "obesity": "정상"}
+            $('#bmi').text(resData['bmi']);         // resData.bmi == resData['bmi']
+            $('#obesity').text(resData['obesity']);    // resData.obesity == resData['obesity']
+         },
+         error: function(jqXHR){
+            $('#bmi').text('');
+            $('#obesity').text('');
+            //alert(jqXHR.responseText + '()' + jqXHR.status + ')');
+            if(jqXHR.status == 500){
+               alert('몸무게와 키 입력을 확인하세요');
+            }
+         }
+      })
       
    }
    
    function fnBmi2(){
-	   
-	   $.ajax({
-		   // 요청
-		   type: 'get',
-		   url: '${contextPath}/second/bmi2',
-		   data: $('#frm').serialize(),
-		   // 응답
-		   dataType: 'json',
-			   success: function(resData){ 				// resData : {bmi: 22, "obesity" : "정상"}
-			   	$('#bmi').text(resData['bmi']);			// resData.bmi     == resData['bmi']
-		   		$('#obesity').text(resData['obesity']); // resData.obesity == resData['obesity']
-		   },
-		   error: function(jqXHR){
-			   $('#bmi').text('');
-			   $('#obesity').text('');
-			   alert(jqXHR.responseText);
-		   }
-	   })
-      
+      let weight = $('#weight').val();
+      if(weight == '' || Number(weight) < 0 || isNaN(weight)){
+         alert('몸무게를 확인하세요.');
+         return;
+      }
+      let height = $('#height').val();
+      if(height == '' || Number(height) < 0 || isNaN(height)){
+         alert('키를 확인하세요.');
+         return;
+      }
+      $.ajax({
+         // 요청
+         type: 'get',
+         url: '${contextPath}/second/bmi2',
+         data: $('#frm').serialize(),
+         // 응답
+         dataType: 'json',
+         success: function(resData){               // resData : {"bmi": 22, "obesity": "정상"}
+            $('#bmi').text(resData['bmi']);         // resData.bmi == resData['bmi']
+            $('#obesity').text(resData['obesity']);    // resData.obesity == resData['obesity']
+         },
+         error: function(jqXHR){
+            $('#bmi').text('');
+            $('#obesity').text('');
+            // alert(jqXHR.responseText);
+            if(jqXHR.status == 400){ // 400은 BAD REQUEST를 의미한다.
+            	alert('몸무게와 키는 0일 수 없습니다.');
+            	
+            }
+         }
+      })
    }
-   
+
 </script>
 </head>
 <body>

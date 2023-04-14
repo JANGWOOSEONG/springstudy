@@ -18,9 +18,9 @@ public class FirstServiceImpl implements IFirstService {
 		
 		try {
 		String name = request.getParameter("name");
-		name = name.isEmpty() ? "홍길동" : name; // 사용자가 입력한 name이 없으면 빈 문자열이 전달된다. 홍길동이 전달
+		name = name.isEmpty() ? "홍길동" : name; // 사용자가 입력한 name이 없으면 빈 문자열이 전달된다. 홍길동이 전달된다.
 		
-		String strAge = request.getParameter("age");
+		String strAge = request.getParameter("age"); // 파라미터는 스트링으로 받아온다
 		strAge = strAge.isEmpty() ? "0" : strAge; // 사용자가 입력한 age가 없으면 빈 문자열이 전달된다.
 		int age = Integer.parseInt(strAge);
 		

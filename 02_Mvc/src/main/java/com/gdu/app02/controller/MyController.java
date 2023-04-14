@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /*
 	@Controller
 	안녕. 난 컨트롤러야.
-	@COmponent를 포함하고 있어서 자동으로 Spring Container에 Bean으로 등록되지.
+	@Component를 포함하고 있어서 자동으로 Spring Container에 Bean으로 등록되지.
 	나는 스프링에 의해서 사용되고 있어.
  */
 @Controller
