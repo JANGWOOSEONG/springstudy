@@ -19,4 +19,10 @@ public class FifthController {
 	public ResponseEntity<String> papago(HttpServletRequest request) {
 		return fifthService.papago(request);
 	}
+	
+	@GetMapping(value="/search.do", produces="application/json")
+	public ResponseEntity<String> search(HttpServletRequest request) {
+		return fifthService.search(request);
+	}
+	
 }
