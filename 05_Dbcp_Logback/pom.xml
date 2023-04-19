@@ -53,7 +53,6 @@
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
 			<exclusions>
-			
 				<!-- Exclude Commons Logging in favor of SLF4j -->
 				<exclusion>
 					<groupId>commons-logging</groupId>
@@ -86,12 +85,17 @@
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- 불필요한 브릿지(Log4J와 SLF4J를 연결하는 브릿지 -->
+		<!--
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		-->
+		<!-- Log4J : Logback으로 대체된 라이브러리 -->
+		<!-- 
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -116,7 +120,8 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
-
+		-->
+		
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>

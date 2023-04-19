@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<h1>헬로우 브라덜</h1>
+	<a href="${contextPath}/board/list.do">게시판</a>
 	
 </body>
 </html>

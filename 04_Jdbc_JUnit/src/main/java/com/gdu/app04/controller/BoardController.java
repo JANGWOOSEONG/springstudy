@@ -54,22 +54,4 @@ public class BoardController {
 		return "redirect:/board/detail.do?board_no=" + board.getBoard_no();
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
