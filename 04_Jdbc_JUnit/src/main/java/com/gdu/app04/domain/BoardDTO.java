@@ -14,4 +14,9 @@ public class BoardDTO {
 	private String writer;
 	private String created_at;
 	private String modified_at;
+	
+	
+	
+	
+	
 }

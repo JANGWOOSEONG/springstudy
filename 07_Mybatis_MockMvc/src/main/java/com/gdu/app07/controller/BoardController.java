@@ -79,10 +79,4 @@ public class BoardController {
 		redirectAttributes.addFlashAttribute("removeResult", boardService.removeBoard(request));
 		return "redirect:/board/list.do?boardNo=" + request.getParameter("boardNo");
 	}
-	
-	// 트랜잭션 테스트
-	@GetMapping("/tx.do")
-	public void tx() {
-		boardService.testTx();
-	}
 }

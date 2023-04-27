@@ -8,7 +8,7 @@ public class MvcController {
 
 	@GetMapping("/")
 	public String welcome() {
-		return "index";
+		return "index";		//web-inf/views/index.jsp
 	}
 	
 }

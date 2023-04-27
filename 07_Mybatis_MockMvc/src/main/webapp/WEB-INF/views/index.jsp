@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="${contextPath}/resources/summernote-0.8.18-dist/summernote-lite.min.css">
 </head>
 <body>
+
 <a href="${contextPath}/board/list.do">게시판</a>
 
 </body>
