@@ -11,37 +11,58 @@
 <title>Insert title here</title>
 <script src="${contextPath}/resources/js/lib/jquery-3.6.4.min.js"></script>
 <script>
+
 	$(function(){
 		
 		// 원글 달기 결과 메시지
 		if('${addResult}' != ''){
-			if('${addResult}' == '1'){
+			if('${addResult}' == '1') {
 				alert('원글이 달렸습니다.');
-			}else{
+			} else {
 				alert('원글 달기가 실패했습니다.');
 			}
-			
 		}
 		
 		// 게시글 삭제 결과 메시지
 		if('${removeResult}' != ''){
-			if('${removeResult}' == '1'){
+			if('${removeResult}' == '1') {
 				alert('게시글이 삭제되었습니다.');
-			}else{
+			} else {
 				alert('게시글 삭제가 실패했습니다.');
 			}
-			
 		}
 		
-		//삭제 버튼 이벤트
+		// 답글 달기 결과 메시지
+		if('${addReplyResult}' != ''){
+			if('${addReplyResult}' == '1') {
+				alert('답글이 달렸습니다.');
+			} else {
+				alert('답글 달기가 실패했습니다.');
+			}
+		}
+		
+		// 삭제 버튼 이벤트
 		$('.frm_remove').on('submit', function(event){
 			if(confirm('BBS를 삭제할까요?') == false){
 				event.preventDefault();
 				return;
 			}
 		})
+		
+		// 답글 작성 화면 표시/숨기기
+		$('.btn_reply').on('click', function(){
+			$('.write').addClass('blind');
+			let write = $(this).closest('.list').next(); // write는 jQuery객체이다. (jQuery wrapper가 필요 없다.)
+			write.removeClass('blind');
+		})
 	})
+
 </script>
+<style>
+	.blind{
+		display: none;
+	}
+</style>
 </head>
 <body>
 
@@ -51,9 +72,8 @@
 	
 	<hr>
 	
-	
 	<div>
-	<div>${pagination}</div>
+		<div>${pagination}</div>
 		<table border="1">
 			<thead>
 				<tr>
@@ -68,16 +88,48 @@
 			<tbody>
 				<c:forEach items="${bbsList}" var="bbs" varStatus="vs">
 					<c:if test="${bbs.state == 1}">
-						<tr>
+						<!-- 게시글 내용 -->
+						<tr class="list">
 							<td>${beginNo - vs.index}</td>
 							<td>${bbs.writer}</td>
-							<td>${bbs.title}</td>
+							<td>
+								<!-- DEPTH에 의한 들여쓰기 -->
+								<c:forEach begin="1" end="${bbs.depth}" step="1">&nbsp;&nbsp;&nbsp;</c:forEach>
+								<!-- 답글은 [Re] 표시하기 -->
+								<c:if test="${bbs.depth > 0}">[Re]</c:if>
+								<!-- 제목 -->
+								${bbs.title}
+								<!-- 답글작성하기 버튼 -->
+								<input type="button" value="답글" class="btn_reply">
+							</td>
 							<td>${bbs.ip}</td>
 							<td>${bbs.createdAt}</td>
 							<td>
 								<form class="frm_remove" method="post" action="${contextPath}/bbs/remove.do">
 									<input type="hidden" name="bbsNo" value="${bbs.bbsNo}">
 									<button>삭제</button>
+								</form>
+							</td>
+						</tr>
+						<!-- 답글 작성 화면 -->
+						<tr class="write blind">
+							<td colspan="6">
+								<form method="post" action="${contextPath}/bbs/reply/add.do">
+									<div>
+										<label for="writer">작성자</label>
+										<input id="writer" name="writer" required="required">
+									</div>
+									<div>
+										<label for="title">제목</label>
+										<input id="title" name="title" required="required">
+									</div>
+									<div>
+										<button>답글달기</button>
+										<!-- 원글의 depth, groupNo, groupOrder를 함께 보낸다. -->
+										<input type="hidden" name="depth" value="${bbs.depth}">
+										<input type="hidden" name="groupNo" value="${bbs.groupNo}">
+										<input type="hidden" name="groupOrder" value="${bbs.groupOrder}">
+									</div>
 								</form>
 							</td>
 						</tr>
@@ -88,10 +140,11 @@
 							<td colspan="5">삭제된 게시글입니다.</td>
 						</tr>
 					</c:if>
-				</c:forEach>	
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 	
 </body>
 </html>
+
