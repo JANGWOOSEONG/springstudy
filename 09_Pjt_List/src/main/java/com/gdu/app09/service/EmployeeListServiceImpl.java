@@ -33,7 +33,7 @@ public class EmployeeListServiceImpl implements EmployeeListService {
 		int page = Integer.parseInt(opt1.orElse("1"));
 		
 		// 전체 레코드 개수를 구한다.
-		int totalRecord = employeeListMapper.getEmployeeCount();
+		int totalRecord = employeeListMapper.EmployeeCount();
 		
 		// 세션에 있는 recordPerPage를 가져온다. 세션에 없는 경우 recordPerPage=10으로 처리한다.
 		HttpSession session = request.getSession();
@@ -81,7 +81,7 @@ public class EmployeeListServiceImpl implements EmployeeListService {
 		int page = Integer.parseInt(opt1.orElse("1"));
 		
 		// 전체 레코드 개수를 구한다.
-		int totalRecord = employeeListMapper.getEmployeeCount();
+		int totalRecord = employeeListMapper.EmployeeCount();
 		
 		// recordPerPage = 9로 처리한다.
 		int recordPerPage = 9;

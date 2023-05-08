@@ -58,7 +58,7 @@
 	}
 	table td:nth-of-type(1) { width: 100px; }
 	table td:nth-of-type(2) { width: 150px; }
-	table td:nth-of-type(3) { width: 300px; }
+	table td:nth-of-type(3) { width: 200px; }
 </style>
 </head>
 <body>

@@ -12,7 +12,8 @@
 
 	<!-- typeAliases -->
 	<typeAliases>
-		<typeAlias alias="BbsDTO" type="com.gdu.book.domain.BbsDTO" />
+		<typeAlias alias="DeptDTO" type="com.gdu.book.domain.DeptDTO" />
+		<typeAlias alias="EmpDTO" type="com.gdu.book.domain.EmpDTO" />
 	</typeAliases>
 
 </configuration>

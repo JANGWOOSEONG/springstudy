@@ -12,6 +12,10 @@
 <script src="${contextPath}/resources/js/lib/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-<h1>ㅎㅇ</h1>
+	
+	<div>
+		<a href="${contextPath}/book/pagination.do">페이징</a>
+	</div>
+	
 </body>
 </html>
