@@ -15,6 +15,7 @@
 		location.href = '${contextPath}/upload/list.do';
 	}
 	function fnFileCheck(vThis){
+
 		// 최대 크기 10MB
 		let maxSize = 1024 * 1024 * 10;
 		
@@ -57,8 +58,9 @@
 			<div>
 				<label for="files">첨부</label>
 				<input type="file" id="files" name="files" multiple="multiple" onchange="fnFileCheck(this)">
-				<div id="fileList">첨부파일의 목록이 이 곳에 표시됩니다.</div>
+				<div id="fileList">첨부 파일의 목록이 이 곳에 표시됩니다</div>
 			</div>
+			<hr>
 			<div>
 				<button>작성완료</button>
 				<input type="button" value="목록" onclick="fnList()">
