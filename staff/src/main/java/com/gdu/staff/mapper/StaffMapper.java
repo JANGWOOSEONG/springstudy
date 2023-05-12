@@ -1,6 +1,7 @@
 package com.gdu.staff.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,4 +11,5 @@ import com.gdu.staff.domain.StaffDTO;
 public interface StaffMapper {
 	public List<StaffDTO> getStaffList();
 	public int addStaff(StaffDTO staffDTO);
+	public List<StaffDTO> getsearchStaff(Map<String, Object> map);
 }

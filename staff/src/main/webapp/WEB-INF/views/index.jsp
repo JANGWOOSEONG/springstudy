@@ -14,7 +14,7 @@
    $(function(){
       fnList();
    })
-   
+   				
    function fnList(){
       $.ajax({
          type: 'get',
@@ -53,6 +53,29 @@
 	   })
    }	
    
+   function fnSearch(){
+		$.ajax({
+			type: 'get',
+			url: '${contextPath}/search.json',
+			data: $('#frm_search').serialize(),
+			dataType: 'json',
+			success: function(resData){		
+				$('#staffList').empty();
+				let str = '<tr>';
+				str += '<td>' + resData.sno;
+				str += '<td>' + resData.name;
+				str += '<td>' + resData.dept;
+				str += '<td>' + resData.salary;
+				$('#staffList').append(str);
+			},
+			error: function(jqXHR){
+				alert('조회된 사원 정보가 없습니다.')
+				fnList();
+				$('#query').val('');
+			}
+		})
+}
+   
 </script>
 </head>
 <body>
@@ -90,7 +113,16 @@
                <td>연봉</td>
             </tr>
          </thead>
-         <tbody id="staffList"></tbody>
+         <tbody id="staffList">
+         	<c:forEach items="${staff}" var="staff" varStatus="vs">
+					<tr>
+						<td>${staff.sno}</td>
+						<td>${staff.name}</td>
+						<td>${staff.dept}</td>
+						<td>${staff.salary}</td>						
+					</tr>
+				</c:forEach>
+         </tbody>
       </table>
    </div>
    

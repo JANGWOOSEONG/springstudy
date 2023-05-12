@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,6 +31,14 @@ public class StaffController {
 	@PostMapping(value="/add.do", produces="text/plain; charset=UTF-8")
 	public String add(HttpServletRequest request) {
 		return staffService.addStaff(request);
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/search.do",produces=MediaType.APPLICATION_JSON_VALUE)
+	public String search(HttpServletRequest request) {
+		
+		staffService.searchStaff(request);
+		return "employees/search";
 	}
 	
 
