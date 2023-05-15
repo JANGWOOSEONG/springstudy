@@ -54,6 +54,7 @@
    }	
    
    function fnSearch(){
+	   
 		$.ajax({
 			type: 'get',
 			url: '${contextPath}/search.json',
@@ -67,7 +68,7 @@
 				str += '<td>' + resData.dept;
 				str += '<td>' + resData.salary;
 				$('#staffList').append(str);
-			},
+			},	 	
 			error: function(jqXHR){
 				alert('조회된 사원 정보가 없습니다.')
 				fnList();
