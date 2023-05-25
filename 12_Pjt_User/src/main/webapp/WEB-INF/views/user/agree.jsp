@@ -37,7 +37,7 @@
   function fnFrmAgreeSubmit(){
 	  $('#frmAgree').on('submit', function(event){
 		  if( $('#service').is(':checked') == false || $('#privacy').is(':checked') == false ){
-			  alert('필수 약관에 동의해야만 가입할 수 있습니다.');
+			  alert('이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.');
 			  event.preventDefault();
 			  return;
 		  }

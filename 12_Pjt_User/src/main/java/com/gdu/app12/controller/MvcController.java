@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MvcController {
-	
-	@GetMapping("/")
+
+	@GetMapping(value={"/", "/index.do"})
 	public String welcome() {
 		return "index";
 	}
-
+	
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" scanPeriod="30 seconds">
+
+	 <!-- Console 화면에 로그를 찍는 console Appender -->
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+      <layout class="com.gdu.movie.logback.MyLogbackLayout" />
+    </encoder>
+  </appender>
+	
+	<!-- Application Loggers : com.gdu.movie 패키지는 debug 수준의 로그 레벨을 가진다. -->
+	<logger name="com.gdu.movie">
+		<level value="DEBUG" />
+	</logger>
+	
+	<!-- 3rdparty Loggers : Spring Framework가 info 수준의 로그 레벨을 가진다. -->
+	<logger name="org.springframework.core">
+		<level value="INFO" />
+	</logger>
+	<logger name="org.springframework.beans">
+		<level value="INFO" />
+	</logger>
+	<logger name="org.springframework.context">
+		<level value="INFO" />
+	</logger>
+	<logger name="org.springframework.web">
+		<level value="INFO" />
+	</logger>
+
+	<!-- Root Logger -->
+	<root>
+		<appender-ref ref="console" />
+	</root>
+	
+</configuration>
